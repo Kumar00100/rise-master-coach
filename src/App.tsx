@@ -9,6 +9,7 @@ import Dashboard from "./pages/Dashboard";
 import Tasks from "./pages/Tasks";
 import Goals from "./pages/Goals";
 import Profile from "./pages/Profile";
+import VoiceCall from "./pages/VoiceCall";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/tasks" element={<Tasks />} />
           <Route path="/goals" element={<Goals />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/voice-call" element={<VoiceCall />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

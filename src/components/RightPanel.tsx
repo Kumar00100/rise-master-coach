@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Sun, Plus, BarChart3, Target, User, Flame } from 'lucide-react';
+import { Sun, Plus, BarChart3, Target, User, Flame, Phone } from 'lucide-react';
 import { useAppStore } from '@/stores/appStore';
 
 interface RightPanelProps {
@@ -10,6 +10,12 @@ const RightPanel = ({ onClose }: RightPanelProps) => {
   const { streak, morningCompleted } = useAppStore();
 
   const options = [
+    { 
+      to: '/voice-call', 
+      icon: Phone, 
+      label: 'Voice Call',
+      description: 'Talk to your coach'
+    },
     { 
       to: '/morning', 
       icon: Sun, 
