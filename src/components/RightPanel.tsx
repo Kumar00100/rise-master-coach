@@ -2,7 +2,11 @@ import { Link } from 'react-router-dom';
 import { Sun, Plus, BarChart3, Target, User, Flame } from 'lucide-react';
 import { useAppStore } from '@/stores/appStore';
 
-const RightPanel = () => {
+interface RightPanelProps {
+  onClose?: () => void;
+}
+
+const RightPanel = ({ onClose }: RightPanelProps) => {
   const { streak, morningCompleted } = useAppStore();
 
   const options = [
@@ -40,35 +44,35 @@ const RightPanel = () => {
   ];
 
   return (
-    <div className="glass-card p-6 h-full">
-      <h2 className="text-xl font-bold text-foreground mb-2">Quick Actions</h2>
-      <p className="text-muted-foreground text-sm mb-6">Choose your next move</p>
+    <div className="p-4">
+      <h2 className="text-lg font-bold text-foreground mb-1">Quick Actions</h2>
+      <p className="text-muted-foreground text-xs mb-4">Choose your next move</p>
 
       {/* Streak Display */}
-      <div className="mb-6 p-4 gradient-primary rounded-xl flex items-center gap-3">
-        <Flame className="w-8 h-8 text-primary-foreground" />
+      <div className="mb-4 p-3 gradient-primary rounded-xl flex items-center gap-3">
+        <Flame className="w-6 h-6 text-primary-foreground" />
         <div>
-          <p className="text-primary-foreground font-bold text-2xl">{streak}</p>
-          <p className="text-primary-foreground/80 text-sm">Day Streak</p>
+          <p className="text-primary-foreground font-bold text-xl">{streak}</p>
+          <p className="text-primary-foreground/80 text-xs">Day Streak</p>
         </div>
       </div>
 
-      <div className="space-y-3">
-        {options.map((option, index) => (
+      <div className="space-y-2">
+        {options.map((option) => (
           <Link
             key={option.to}
             to={option.to}
-            className="option-btn group animate-fade-in"
-            style={{ animationDelay: `${index * 0.1}s` }}
+            onClick={onClose}
+            className="flex items-center gap-3 p-3 rounded-xl bg-muted/50 hover:bg-primary/20 transition-all duration-200 group"
           >
             <div className={`p-2 rounded-lg ${option.completed ? 'bg-success/20' : 'bg-primary/20'} group-hover:bg-primary/30 transition-colors`}>
-              <option.icon className={`w-5 h-5 ${option.completed ? 'text-success' : 'text-primary'}`} />
+              <option.icon className={`w-4 h-4 ${option.completed ? 'text-success' : 'text-primary'}`} />
             </div>
             <div className="flex-1">
-              <p className="font-medium text-foreground flex items-center gap-2">
+              <p className="font-medium text-foreground text-sm flex items-center gap-2">
                 {option.label}
                 {option.completed && (
-                  <span className="text-xs bg-success/20 text-success px-2 py-0.5 rounded-full">Done</span>
+                  <span className="text-xs bg-success/20 text-success px-1.5 py-0.5 rounded-full">Done</span>
                 )}
               </p>
               <p className="text-xs text-muted-foreground">{option.description}</p>
