@@ -49,18 +49,18 @@ const AIChat = () => {
         </div>
       </div>
 
-      <div className="flex-1 overflow-y-auto space-y-4 pr-2 mb-6 max-h-[60vh]">
+      <div className="flex-1 overflow-y-auto space-y-3 pr-2 mb-6 max-h-[60vh]">
         {messages.map((msg, index) => (
           <div
             key={msg.id}
             className={`flex ${msg.isAI ? 'justify-start' : 'justify-end'} animate-fade-in`}
-            style={{ animationDelay: `${index * 0.1}s` }}
+            style={{ animationDelay: `${index * 0.05}s` }}
           >
             <div
-              className={`max-w-[80%] p-4 rounded-2xl ${
+              className={`max-w-[85%] px-4 py-3 shadow-sm ${
                 msg.isAI
-                  ? 'bg-card border border-border/50 text-foreground'
-                  : 'gradient-primary text-primary-foreground'
+                  ? 'bg-card/80 backdrop-blur-sm border border-border/30 text-foreground rounded-2xl rounded-tl-md'
+                  : 'gradient-primary text-primary-foreground rounded-2xl rounded-tr-md'
               }`}
             >
               <p className="text-sm md:text-base leading-relaxed">{msg.text}</p>
