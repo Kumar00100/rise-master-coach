@@ -5,7 +5,11 @@ export interface Message {
   id: string;
   text: string;
   isAI: boolean;
+<<<<<<< HEAD
   timestamp: number;
+=======
+  timestamp: Date;
+>>>>>>> 93df1df2b1449a1a222c1b6a2d16f4958f84c803
 }
 
 export interface Task {
@@ -13,7 +17,11 @@ export interface Task {
   title: string;
   completed: boolean;
   category: string;
+<<<<<<< HEAD
   createdAt: number;
+=======
+  createdAt: Date;
+>>>>>>> 93df1df2b1449a1a222c1b6a2d16f4958f84c803
 }
 
 export interface Goal {
@@ -31,7 +39,11 @@ interface AppState {
   streak: number;
   morningCompleted: boolean;
   lastMorningDate: string | null;
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 93df1df2b1449a1a222c1b6a2d16f4958f84c803
   addMessage: (text: string, isAI: boolean) => void;
   addTask: (title: string, category: string) => void;
   toggleTask: (id: string) => void;
@@ -49,6 +61,7 @@ export const useAppStore = create<AppState>()(
       messages: [
         {
           id: '1',
+<<<<<<< HEAD
           text:
             "🌅 Hello Master! I'm your AI Life Coach. Ready to transform your life today?",
           isAI: true,
@@ -56,13 +69,23 @@ export const useAppStore = create<AppState>()(
         },
       ],
 
+=======
+          text: "🌅 Hello Master! I'm your AI Life Coach. Ready to transform your life today?",
+          isAI: true,
+          timestamp: new Date(),
+        },
+      ],
+>>>>>>> 93df1df2b1449a1a222c1b6a2d16f4958f84c803
       tasks: [],
       goals: [
         { id: '1', title: 'Morning Routines', progress: 0, target: 30, category: 'habits' },
         { id: '2', title: 'Workout Sessions', progress: 0, target: 20, category: 'fitness' },
         { id: '3', title: 'Books Read', progress: 0, target: 12, category: 'learning' },
       ],
+<<<<<<< HEAD
 
+=======
+>>>>>>> 93df1df2b1449a1a222c1b6a2d16f4958f84c803
       streak: 0,
       morningCompleted: false,
       lastMorningDate: null,
@@ -71,12 +94,16 @@ export const useAppStore = create<AppState>()(
         set((state) => ({
           messages: [
             ...state.messages,
+<<<<<<< HEAD
             {
               id: generateId(),
               text,
               isAI,
               timestamp: Date.now(),
             },
+=======
+            { id: generateId(), text, isAI, timestamp: new Date() },
+>>>>>>> 93df1df2b1449a1a222c1b6a2d16f4958f84c803
           ],
         })),
 
@@ -84,6 +111,7 @@ export const useAppStore = create<AppState>()(
         set((state) => ({
           tasks: [
             ...state.tasks,
+<<<<<<< HEAD
             {
               id: generateId(),
               title,
@@ -91,6 +119,9 @@ export const useAppStore = create<AppState>()(
               category,
               createdAt: Date.now(),
             },
+=======
+            { id: generateId(), title, completed: false, category, createdAt: new Date() },
+>>>>>>> 93df1df2b1449a1a222c1b6a2d16f4958f84c803
           ],
         })),
 
@@ -116,12 +147,20 @@ export const useAppStore = create<AppState>()(
       completeMorning: () => {
         const today = new Date().toDateString();
         const { lastMorningDate, streak } = get();
+<<<<<<< HEAD
 
         const yesterday = new Date();
         yesterday.setDate(yesterday.getDate() - 1);
 
         const isConsecutive = lastMorningDate === yesterday.toDateString();
 
+=======
+        
+        const yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() - 1);
+        const isConsecutive = lastMorningDate === yesterday.toDateString();
+        
+>>>>>>> 93df1df2b1449a1a222c1b6a2d16f4958f84c803
         set({
           morningCompleted: true,
           lastMorningDate: today,
@@ -132,7 +171,11 @@ export const useAppStore = create<AppState>()(
       resetMorning: () => {
         const today = new Date().toDateString();
         const { lastMorningDate } = get();
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 93df1df2b1449a1a222c1b6a2d16f4958f84c803
         if (lastMorningDate !== today) {
           set({ morningCompleted: false });
         }

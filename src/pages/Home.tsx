@@ -23,8 +23,16 @@ const Home = () => {
           </h1>
           <p className="text-muted-foreground mt-2">Your AI-Powered Discipline Coach</p>
         </header>
+<<<<<<< HEAD
         {/* Main Content - Full width chat */}       
           <AIChat />
+=======
+
+        {/* Main Content - Full width chat */}
+        <div className="glass-card p-6">
+          <AIChat />
+        </div>
+>>>>>>> 93df1df2b1449a1a222c1b6a2d16f4958f84c803
       </div>
 
       {/* Floating Action Button */}
